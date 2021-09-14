@@ -3,6 +3,7 @@
 		<ID>1</ID>
 		<NAME>John Doe</NAME>
 		<ADDRESS>
+			<FLAT></FLAT>
 			<HOUSE>38</HOUSE>
 			<ROAD>3</ROAD>
 			<AREA>Banani</AREA>
@@ -30,9 +31,11 @@
 		<ID>3</ID>
 		<NAME>Ala Voski</NAME>
 		<ADDRESS>
+			<FLAT></FLAT>
 			<HOUSE>38</HOUSE>
 			<ROAD>3</ROAD>
 			<AREA>Motijheel</AREA>
+			<DISTRICT></DISTRICT>
 		</ADDRESS>
 		<DEPARTMENT>Human Resource</DEPARTMENT>
 		<SALARY>$30000</SALARY>
