@@ -1,9 +1,26 @@
 <?php
+
+$nameErr = $emailErr = $genderErr = $websiteErr = "";
 $gender = "";
 if (isset($_POST['Submit'])) {
     $input = $_POST['myGender'];
     $gender = $input . "<br>";
 }
+
+if (empty($_POST["gender"])) {
+    $genderErr = "Gender is required";
+} else {
+    $gender = test_input($_POST["gender"]);
+}
+
+function test_input($data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
 ?>
 
 <html>
@@ -16,15 +33,12 @@ if (isset($_POST['Submit'])) {
     <?php echo $gender; ?>
     <fieldset>
         <legend>GENDER</legend>
-        <form action="" method="post">
-            <input type="radio" id="male" name="myGender" value="Male">
-            <label for="male">Male</label>
-            <input type="radio" id="female" name="myGender" value="Female">
-            <label for="female">Female</label>
-            <input type="radio" id="other" name="myGender" value="Other">
-            <label for="other">Other</label>
-            <br>
-            <hr>
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+            <input type="radio" name="gender" <?php if (isset($gender) && $gender == "female") echo "checked"; ?> value="Female">Female
+            <input type="radio" name="gender" <?php if (isset($gender) && $gender == "male") echo "checked"; ?> value="Male">Male
+            <input type="radio" name="gender" <?php if (isset($gender) && $gender == "other") echo "checked"; ?> value="Other">Other
+            <span class="error">* <?php echo $genderErr; ?></span>
+            <br><br>
             <input type="submit" name="submit" value="Submit">
         </form>
     </fieldset>
