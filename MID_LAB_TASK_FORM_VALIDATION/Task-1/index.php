@@ -15,11 +15,6 @@
     $Name = "";
     $nameError = "";
 
-    if (isset($_POST['Submit'])) {
-        $input = $_POST['inputText'];
-        $Name = $input . "<br>";
-    }
-
     if (($_SERVER["REQUEST_METHOD"] == "POST")) {
         $name_words = $_POST["name"];
 
@@ -65,7 +60,9 @@
                     }
                     ?>
                 </span>
-                <br>
+
+                <hr>
+
                 <div style=margin-top:20px;>
                     <input type="submit" value="Submit">
                 </div>

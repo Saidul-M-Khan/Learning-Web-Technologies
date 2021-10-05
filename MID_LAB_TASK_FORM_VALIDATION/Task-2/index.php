@@ -15,19 +15,17 @@
     $Email = "";
     $emailError = "";
 
-    if (isset($_POST['Submit'])) {
-        $input = $_POST['inputText'];
-        $Email = $input . "<br>";
-    }
-
-    if (empty($_POST["email"])) {
-        $emailError = "Email is required";
-    } else {
-        $Email = validateInput($_POST["email"]);
-        if (!filter_var($Email, FILTER_VALIDATE_EMAIL)) {
-            $emailError = "Invalid Email Format Type it correctly";
+    if (($_SERVER["REQUEST_METHOD"] == "POST")) {
+        if (empty($_POST["email"])) {
+            $emailError = "Email is required";
+        } else {
+            $Email = validateInput($_POST["email"]);
+            if (!filter_var($Email, FILTER_VALIDATE_EMAIL)) {
+                $emailError = "Invalid Email Format Type it correctly";
+            }
         }
     }
+
 
     function validateInput($information)
     {
@@ -47,14 +45,15 @@
             <fieldset>
                 <legend><label>EMAIL &nbsp; </label></legend>
 
-                <input type="text" id="email" name="email" value="" placeholder="EMAIL"><span class="red">
+                <input type="text" id="email" name="email" value="" placeholder="EMAIL"><span class="red"> &#8505;
                     <?php if ($emailError != "") {
-                        echo "* - ";
+                        echo "&nbsp; &nbsp* - ";
                         echo $emailError;
                     }
                     ?>
                 </span>
-                <br>
+
+                <hr>
                 <div style=margin-top:20px;>
                     <input type="submit" value="Submit">
                 </div>

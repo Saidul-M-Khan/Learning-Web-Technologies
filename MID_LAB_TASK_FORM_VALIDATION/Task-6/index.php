@@ -1,12 +1,20 @@
 <?php
-
-if (isset($_REQUEST['submit'])) {
-    $group = $_REQUEST['bloodGroup'];
-    if ($group != "") {
-        echo $group;
+$Blood_Group = "";
+$blood_group_error = "";
+if (($_SERVER["REQUEST_METHOD"] == "POST")) {
+    if (empty($_POST["bloodgroup"])) {
+        $blood_group_error = "One needs to be Selected";
     } else {
-        echo "Null Value";
+        $Blood_Group = test_input($_POST["bloodgroup"]);
     }
+}
+
+function test_input($data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
 }
 
 ?>
@@ -18,27 +26,43 @@ if (isset($_REQUEST['submit'])) {
 </head>
 
 <body>
-    <fieldset>
-        <legend>BLOOD GROUP</legend>
-        <form method="post">
-            <select name="bloodGroup" value="<?php if (isset($group)) {
-                                                    echo $group;
-                                                } ?>">
-                <option disabled selected value> Select An Option </option>
-                <option value="A Positive">A+</option>
-                <option value="A Negative">A-</option>
-                <option value="B Positive">B+</option>
-                <option value="B Negative">B-</option>
-                <option value="B Negative">B-</option>
-                <option value="AB Positive">AB+</option>
-                <option value="AB Negative">AB-</option>
-                <option value="O Positive">O+</option>
-                <option value="O Negative">O-</option>
-            </select>
-            <hr>
-            <input type="submit" name="submit" value="Submit">
-        </form>
-    </fieldset>
+    <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+        <div>
+            <div>
+                <?php if ($blood_group_error == "") {
+                    echo $Blood_Group;
+                }
+                ?>
+                <fieldset>
+                    <legend><label>BLOOD GROUP&nbsp;</label></legend>
+
+                    <select name="bloodgroup">
+                        <option disabled selected value> Select An Option </option>
+                        <option value="A Positive">A+</option>
+                        <option value="A Negative">A-</option>
+                        <option value="B Positive">B+</option>
+                        <option value="B Negative">B-</option>
+                        <option value="B Negative">B-</option>
+                        <option value="AB Positive">AB+</option>
+                        <option value="AB Negative">AB-</option>
+                        <option value="O Positive">O+</option>
+                        <option value="O Negative">O-</option>
+                    </select>
+                    <span class="red">
+                        <?php
+                        if ($blood_group_error != "") {
+                            echo "* - ";
+                            echo $blood_group_error;
+                        }
+                        ?>
+                    </span>
+                    <div style=margin-top:20px;>
+                        <input type="submit" value="Submit">
+                    </div>
+                </fieldset>
+            </div>
+    </form>
+
 </body>
 
 </html>

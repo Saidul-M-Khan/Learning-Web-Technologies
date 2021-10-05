@@ -1,16 +1,14 @@
 <?php
 
-$nameErr = $emailErr = $genderErr = $websiteErr = "";
-$gender = "";
-if (isset($_POST['Submit'])) {
-    $input = $_POST['myGender'];
-    $gender = $input . "<br>";
-}
+$genderError = "";
+$Gender = "";
 
-if (empty($_POST["gender"])) {
-    $genderErr = "Gender is required";
-} else {
-    $gender = test_input($_POST["gender"]);
+if (($_SERVER["REQUEST_METHOD"] == "POST")) {
+    if (empty($_POST["gender"])) {
+        $genderError = "Gender Required";
+    } else {
+        $Gender = test_input($_POST["gender"]);
+    }
 }
 
 function test_input($data)
@@ -26,22 +24,38 @@ function test_input($data)
 <html>
 
 <head>
-    <title>Gender</title>
+    <title>Task-4</title>
 </head>
 
 <body>
-    <?php echo $gender; ?>
-    <fieldset>
-        <legend>GENDER</legend>
-        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-            <input type="radio" name="gender" <?php if (isset($gender) && $gender == "female") echo "checked"; ?> value="Female">Female
-            <input type="radio" name="gender" <?php if (isset($gender) && $gender == "male") echo "checked"; ?> value="Male">Male
-            <input type="radio" name="gender" <?php if (isset($gender) && $gender == "other") echo "checked"; ?> value="Other">Other
-            <span class="error">* <?php echo $genderErr; ?></span>
-            <br><br>
-            <input type="submit" name="submit" value="Submit">
-        </form>
-    </fieldset>
+    <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+        <div>
+            <?php if ($genderError == "") {
+                echo $Gender;
+            }
+            ?>
+            <fieldset class="item">
+                <legend>
+                    <label">GENDER&nbsp;</label>
+                </legend>
+                <input type="radio" id="gender" name="gender" value="Male"> Male
+                <input type="radio" id="gender" name="gender" value="Female"> Female
+                <input type="radio" id="gender" name="gender" value="Other"> Other <span class="red">
+                    <?php
+                    if ($genderError != "") {
+                        echo "* - ";
+                        echo $genderError;
+                    }
+                    ?>
+                </span>
+
+                <div style=margin-top:20px;>
+                    <input type="submit" value="Submit">
+                </div>
+            </fieldset>
+        </div>
+    </form>
+
 </body>
 
 </html>
