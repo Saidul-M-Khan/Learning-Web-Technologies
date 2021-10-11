@@ -42,7 +42,9 @@ function validateInput($information)
     <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
         <div>
             <?php if ($degreeError == "") {
-                print_r($Degree);
+                  foreach($Degree as $degree){
+                  echo $degree . "<br>";
+                  }
             }
             ?>
 

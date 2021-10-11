@@ -1,6 +1,6 @@
 <?php
 
-$gender = $_GET['myDegree'];
+$gender = $_POST['myDegree'];
 
 ?>
 
@@ -13,7 +13,7 @@ $gender = $_GET['myDegree'];
 <body>
     <fieldset>
         <legend>DEGREE</legend>
-        <form method="get">
+        <form method="POST">
             <input type="checkbox" id="SSC" name="myDegree" value="SSC">
             <label for="SSC">SSC</label>
             <input type="checkbox" id="HSC" name="myDegree" value="HSC">

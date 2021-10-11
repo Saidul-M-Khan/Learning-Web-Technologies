@@ -1,11 +1,7 @@
 <?php
 
-$nameErr = $emailErr = $genderErr = $websiteErr = "";
+$genderErr = "";
 $gender = "";
-if (isset($_POST['Submit'])) {
-    $input = $_POST['myGender'];
-    $gender = $input . "<br>";
-}
 
 if (empty($_POST["gender"])) {
     $genderErr = "Gender is required";
