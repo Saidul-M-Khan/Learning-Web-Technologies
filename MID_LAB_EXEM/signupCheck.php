@@ -4,7 +4,7 @@
 if (isset($_POST['submit'])) {
 
 	// $id 	= $_POST['id'];
-	// $email 		= $_POST['email'];
+	// $name 		= $_POST['name'];
 	// $password 	= $_POST['password'];
 
 	$id = $_POST['id'];
@@ -15,16 +15,15 @@ if (isset($_POST['submit'])) {
 
 	if ($id != "") {
 		if ($password != "") {
-			if ($email != "") {
-
+			if ($name != "") {
 				$myfile = fopen('user.txt', 'a');
-				$myuser = $id . "|" . $password . "|" . $email . "\r\n";
+				$myuser = $id . "|" . $password . "|" . $name . "|" . $userType . "|" . "\r\n";
 				fwrite($myfile, $myuser);
 				fclose($myfile);
 
 				header('location: login.html');
 			} else {
-				echo "invalid email....";
+				echo "invalid name....";
 			}
 		} else {
 			echo "invalid password....";
