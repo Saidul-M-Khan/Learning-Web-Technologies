@@ -37,7 +37,7 @@ $count = mysqli_num_rows($result);
 
                 <td>
                     <a href="edit.php?id=<?php echo $data['id']; ?>"> EDIT </a> |
-                    <a href="delete.php?id=<?php echo $data['id']; ?>"> DELETE</a>
+                    <a href="confirm_delete.php?id=<?php echo $data['id']; ?>"> DELETE</a>
                 </td>
             </tr>
 

@@ -32,6 +32,9 @@ $product = getProductById($id);
 				</tr>
 				<tr>
 					<td><input type="hidden" name="id" value="<?= $product['id'] ?>"></td>
+					<input type="checkbox" name="display" id="display" value="Yes" <?php if ($product['displayable'] == "Yes") {
+																						echo "checked";
+																					} ?>>Display
 					<td><input type="submit" name="submit" value="update"></td>
 				</tr>
 			</table>

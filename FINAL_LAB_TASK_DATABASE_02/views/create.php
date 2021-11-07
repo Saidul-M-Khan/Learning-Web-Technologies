@@ -1,28 +1,54 @@
 <?php
 require_once('../model/productsModel.php');
 if (isset($_POST['submit'])) {
+	if (isset($_POST['display'])) {
+		$product_name = $_POST['product_name'];
+		$product_buying_price = $_POST['product_buying_price'];
+		$product_selling_price = $_POST['product_selling_price'];
+		$displayStatus = $_POST['display'];
 
-	$product_name = $_POST['product_name'];
-	$product_buying_price = $_POST['product_buying_price'];
-	$product_selling_price = $_POST['product_selling_price'];
+		if ($product_name != "") {
+			if ($product_buying_price != "") {
+				if ($product_selling_price != "") {
 
-	if ($product_name != "") {
-		if ($product_buying_price != "") {
-			if ($product_selling_price != "") {
-
-				$product = ['product_name' => $product_name, 'product_buying_price' => $product_buying_price, 'product_selling_price' => $product_selling_price];
-				$status = addProduct($product);
-				if ($status) {
-					header('location: ../views/productList.php');
+					$product = ['product_name' => $product_name, 'product_buying_price' => $product_buying_price, 'product_selling_price' => $product_selling_price, 'displayable' => $displayStatus];
+					$status = addProduct($product);
+					if ($status) {
+						header('location: ../views/productList.php');
+					}
+				} else {
+					echo "Invalid product selling price";
 				}
 			} else {
-				echo "Invalid product selling price";
+				echo "Product buying price is invalid";
 			}
 		} else {
-			echo "Product buying price is invalid";
+			echo "Invalid product name";
 		}
 	} else {
-		echo "Invalid product name";
+		$product_name = $_POST['product_name'];
+		$product_buying_price = $_POST['product_buying_price'];
+		$product_selling_price = $_POST['product_selling_price'];
+		$displayStatus = 'No';
+
+		if ($product_name != "") {
+			if ($product_buying_price != "") {
+				if ($product_selling_price != "") {
+
+					$product = ['product_name' => $product_name, 'product_buying_price' => $product_buying_price, 'product_selling_price' => $product_selling_price, 'displayable' => $displayStatus];
+					$status = addProduct($product);
+					if ($status) {
+						header('location: ../views/productList.php');
+					}
+				} else {
+					echo "Invalid product selling price";
+				}
+			} else {
+				echo "Product buying price is invalid";
+			}
+		} else {
+			echo "Invalid product name";
+		}
 	}
 }
 ?>
@@ -72,6 +98,13 @@ if (isset($_POST['submit'])) {
 				<tr>
 					<td>Selling Price:</td>
 					<td><input type="text" name="product_selling_price" value=""></td>
+				</tr>
+				<tr>
+					<td>
+
+						<input type="checkbox" name="display" id="display" value="Yes">Display
+
+					</td>
 				</tr>
 				<tr>
 					<td></td>

@@ -5,7 +5,7 @@ require_once('db.php');
 function addProduct($product)
 {
     $con = getConnection();
-    $sql = "insert into products values('', '{$product['product_name']}', '{$product['product_buying_price']}', '{$product['product_selling_price']}')";
+    $sql = "insert into products values('', '{$product['product_name']}', '{$product['product_buying_price']}', '{$product['product_selling_price']}', '{$product['displayable']}')";
 
     if (mysqli_query($con, $sql)) {
         return true;
@@ -17,7 +17,7 @@ function addProduct($product)
 function getAllProducts()
 {
     $con = getConnection();
-    $sql = "select * from products";
+    $sql = "select * from products where displayable='Yes'";
     $result = mysqli_query($con, $sql);
     return $result;
 }
@@ -34,7 +34,7 @@ function getProductById($id)
 function editProduct($product)
 {
     $con = getConnection();
-    $sql = "update products set product_name='{$product['product_name']}', product_buying_price='{$product['product_buying_price']}', product_selling_price='{$product['product_selling_price']}' where id={$product['id']}";
+    $sql = "update products set product_name='{$product['product_name']}', product_buying_price='{$product['product_buying_price']}', product_selling_price='{$product['product_selling_price']}', displayable='{$product['displayable']}' where id={$product['id']}";
 
     if (mysqli_query($con, $sql)) {
         return true;
