@@ -3,9 +3,7 @@
 require_once('../model/productsModel.php');
 
 $id = $_REQUEST['id'];
-//echo $id;
 $product = getProductById($id);
-//print_r($user);
 ?>
 
 <html>
@@ -15,10 +13,6 @@ $product = getProductById($id);
 </head>
 
 <body>
-	<!-- <center>
-		<a href="home.php">Back </a> |
-		<a href="../controller/logout.php">logout </a>
-	</center> -->
 
 	<form method="post" action="../controller/updateProduct.php">
 		<fieldset>

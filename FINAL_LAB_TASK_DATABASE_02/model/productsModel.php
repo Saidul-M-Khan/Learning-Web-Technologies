@@ -2,20 +2,6 @@
 
 require_once('db.php');
 
-// function validate($username, $password)
-// {
-//     $con = getConnection();
-//     $sql = "select * from users where username='{$username}' and password='{$password}'";
-//     $result = mysqli_query($con, $sql);
-//     $data = mysqli_fetch_assoc($result);
-
-//     if ($data != null) {
-//         return true;
-//     } else {
-//         return false;
-//     }
-// }
-
 function addProduct($product)
 {
     $con = getConnection();
@@ -31,7 +17,7 @@ function addProduct($product)
 function getAllProducts()
 {
     $con = getConnection();
-    $sql = "select product_name AS NAME, (product_selling_price-product_buying_price) AS PROFIT from products";
+    $sql = "select * from products";
     $result = mysqli_query($con, $sql);
     return $result;
 }
