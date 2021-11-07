@@ -36,23 +36,19 @@ $count = mysqli_num_rows($result);
 			<th>ACTION</th>
 		</tr>
 
-		<?php
-		// include('../model/db.php');
-		// $query=mysqli_query($con,"select * from `users`");
-		while ($data = mysqli_fetch_assoc($result)) { ?>
+		<?php while ($data = mysqli_fetch_assoc($result)) { ?>
 			<tr>
 				<td><?= $data['id'] ?></td>
 				<td><?= $data['username'] ?></td>
 				<td><?= $data['password'] ?></td>
 				<td><?= $data['email'] ?></td>
 				<td>
-					<a href="edit.php?id=<?php echo $data['id']; ?>">Edit</a> |
-					<a href="delete.php?id=<?php echo $data['id']; ?>">Delete</a>
+					<a href="edit.php?id=<?= $data['id'] ?>"> EDIT </a> |
+					<a href="delete.php?id=<?php echo $data['id']; ?>"> DELETE</a>
 				</td>
 			</tr>
 
 		<?php } ?>
-
 	</table>
 </body>
 
