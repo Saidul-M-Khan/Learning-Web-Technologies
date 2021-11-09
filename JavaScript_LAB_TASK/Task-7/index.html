@@ -26,7 +26,8 @@
     <script>
         function validate() {
             var num = document.getElementById("user_id").value;
-            if (num != "") {
+            var file = document.getElementById("file").value;
+            if (num != "" || file != "") {
                 if (isNaN(num)) {
                     document.getElementById("idError").innerHTML =
                         "<span style='color:red;'>&nbsp;&nbsp;Enter Numeric Value Only</span>";
@@ -52,6 +53,8 @@
             } else {
                 document.getElementById("idError").innerHTML =
                     "<span style='color:red;'>&nbsp;&nbsp;Please Enter a ID</span>";
+                    document.getElementById("picError").innerHTML =
+                    "<span style='color:red;'>&nbsp;&nbsp;Please Upload a Image</span>";
             }
         }
 
