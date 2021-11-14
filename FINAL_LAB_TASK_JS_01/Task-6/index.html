@@ -1,0 +1,53 @@
+<html>
+
+<head>
+    <title>BLOOD GROUP</title>
+</head>
+
+<body>
+    <div>
+        <div>
+            <fieldset>
+                <legend><label>BLOOD GROUP&nbsp;</label></legend>
+
+                <select name="bloodGroup" id="bloodGroup">
+                    <option disabled selected value> Select An Option </option>
+                    <option value="A Positive">A+</option>
+                    <option value="A Negative">A-</option>
+                    <option value="B Positive">B+</option>
+                    <option value="B Negative">B-</option>
+                    <option value="B Negative">B-</option>
+                    <option value="AB Positive">AB+</option>
+                    <option value="AB Negative">AB-</option>
+                    <option value="O Positive">O+</option>
+                    <option value="O Negative">O-</option>
+                </select>
+                <span id="error" style='color:red;'>
+
+                </span>
+                <span id="success" style='color:green;'>
+
+                </span>
+                <div style=margin-top:20px;>
+                    <input type="button" onclick="validateBloodGroup()" value="select" />
+                </div>
+            </fieldset>
+        </div>
+
+
+        <script>
+            function validateBloodGroup() {
+                if (document.getElementById("bloodGroup").value == "") {
+                    document.getElementById('error').innerHTML = "<span>Please select an option!</span>";
+                    return false;
+                } else {
+                    document.getElementById('error').innerHTML = "";
+                    document.getElementById('success').innerHTML = "<span>Successfully submitted!</span>";
+                    return true;
+                }
+            }
+        </script>
+
+</body>
+
+</html>
