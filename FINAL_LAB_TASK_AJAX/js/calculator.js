@@ -14,7 +14,7 @@ $(document).ready(function(){
         }
         //var str = $('#display').val()+num;
         $.ajax({
-                url:'ajax.php',
+                url:'../ajax.php',
                 type: "POST",
                 data:{'action':'operation','num':num,'old':old},
                 success: function(msg){
@@ -29,7 +29,7 @@ $(document).ready(function(){
         var num = $('#display').html();
         var old = $('#display').html();
         $.ajax({
-                url:'ajax.php',
+                url:'../ajax.php',
                 type: "POST",
                 data:{'action':'equal', 'num':num, 'old':old},
                 success: function(msg){
