@@ -51,12 +51,6 @@ body {
     align-items: stretch;
     line-height: 2rem;
 }
-.branding {
-    flex-grow: 1;
-    cursor: default;
-    font-size: 0.8rem;
-    padding-left: 15px;
-}
 .window {
     display: flex;
     justify-content: space-between;
@@ -92,8 +86,8 @@ body {
     justify-content: center;
     align-items: center;
 }
-.sub-menu .button {
-    line-height: 3rem;
+.button.close:hover {
+    background: #f00;
 }
 .main-menu {
     background: #e6e6e6;
@@ -105,7 +99,7 @@ body {
 .number:active {
     font-size: 1.4rem;
 }
-.button:hover, .button-top:hover {
+.button:hover {
     background: #cfcfcf;
     cursor: pointer;
 }
@@ -127,28 +121,6 @@ body {
     width: 25px;
     height: 25px;
 }
-.type {
-    display: flex;
-}
-.column {
-    display: flex;
-    align-items: center;
-}
-.history {
-    flex-grow: 6;
-    justify-content: flex-end;
-}
-.button-top {
-    display: flex;
-    padding: 10px 15px;
-    pointer-events: none;
-}
-.menu {
-    flex-grow: 1;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
 .image:active img {
     width: 24px;
     height: 24px;
@@ -163,32 +135,12 @@ body {
 .dot:active {
     font-size: 1.4rem;
 }
-.calculator-menu:hover {
-    background: #cfcfcf;
-    cursor: pointer;
-}
 .calculator-chosen {
     font-size: 1rem;
     letter-spacing: 2px;
     cursor: default;
     padding: 10px 12px;
     font-weight: 900;
-}
-.memory {
-    display: flex;
-    font-size: 0.75rem;
-    color: #757575;
-}
-.memory > div:hover {
-    color: #000;
-    background: #cfcfcf;
-    cursor: pointer;
-}
-.memory > div {
-    flex-grow: 1;
-    text-align: center;
-    line-height: 2rem;
-    pointer-events:none;
 }
 #plus-minus {
     pointer-events: none;
