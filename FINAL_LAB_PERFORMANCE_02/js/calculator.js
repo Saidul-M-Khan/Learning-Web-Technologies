@@ -15,7 +15,7 @@ $(document).ready(function(){
         $.ajax({
                 url:'../ajax.php',
                 type: "POST",
-                data:{'action':'operation','num':num,'old':old},
+                data:{'action':'mathOperation','num':num,'old':old},
                 success: function(msg){
                     $('#display').html(msg);
                 }
