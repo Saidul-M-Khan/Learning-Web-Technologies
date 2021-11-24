@@ -1,9 +1,7 @@
 $(document).ready(function(){
-    //general
     $('input[type=button]').click(function(){
         var num = $(this).val();
         var old = $('#display').html();
-        //this will clear the screen
         if( num === 'C' ){
             $('#display').html('');
             return;
@@ -23,7 +21,6 @@ $(document).ready(function(){
                 $('#display').html('Oops! An error occured');}
                );
     });
-    //equal button click
     $('#eql').click(function(){
         var num = $('#display').html();
         var old = $('#display').html();
@@ -35,7 +32,7 @@ $(document).ready(function(){
                     $('#display').html(msg);
                 }
             }).error(function(){
-                $('#display').html('Oops! An error occured');}
+                $('#display').html('Oops! An error Occured');}
                );
     });
 });
